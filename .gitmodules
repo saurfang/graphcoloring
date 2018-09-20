@@ -1,0 +1,4 @@
+[submodule "src/GraphColoring-raw"]
+	path = src/GraphColoring-raw
+	url = git@github.com:saurfang/GraphColoring-cpp.git
+	branch = fix-mcs

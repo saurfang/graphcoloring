@@ -1,0 +1,8 @@
+CPPFILES = $(wildcard *.cpp GraphColoring/Source/*.cpp)
+
+SOURCES = $(CPPFILES)
+
+# This must be defined identically in Makevars.win
+OBJECTS = $(CPPFILES:.cpp=.o)
+
+PKG_CXXFLAGS = -IGraphColoring
