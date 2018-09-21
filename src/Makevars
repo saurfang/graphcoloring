@@ -6,3 +6,4 @@ SOURCES = $(CPPFILES)
 OBJECTS = $(CPPFILES:.cpp=.o)
 
 PKG_CXXFLAGS = -IGraphColoring
+CXX_STD = CXX11
