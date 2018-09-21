@@ -6,10 +6,14 @@ cache: packages
 after_success:
   - Rscript -e 'covr::codecov()'
 
+env:
+  global:
+    - _R_CHECK_FORCE_SUGGESTS_=FALSE
+
 # Handle git submodules yourself
 git:
-    submodules: false
-# Use sed to replace the SSH URL with the public URL, then initialize submodules
+  submodules: false
 before_install:
-    - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
-    - git submodule update --init --recursive
+  # Use sed to replace the SSH URL with the public URL, then initialize submodules
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git submodule update --init --recursive
