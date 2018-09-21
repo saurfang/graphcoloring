@@ -73,23 +73,23 @@ IntegerVector graph_coloring_lmxrlf(ListOf<IntegerVector> adj_list) {
   return as_coloring(graph, adj_list.size());
 }
 
-// //' @describeIn graph_coloring Color graph using a hybrid of DASTUR and TabuCol algorithm
-// //' \insertCite{Kirovski:1998:ECL:277044.277165,Brelaz:1979:NMC:359094.359101,Hertz:1987:UTS:44141.44146}{graphcoloring}
-// //' @export
-// // [[Rcpp::export]]
-// IntegerVector graph_coloring_hybrid_dsatur_tabucol(ListOf<IntegerVector> adj_list) {
-//   GraphColor *graph = new HybridDsatur(as_input_graph(adj_list));
-//   return as_coloring(graph, adj_list.size());
-// }
-//
-// //' @describeIn graph_coloring Color graph using a hybrid of lmXRLF and TabuCol algorithm
-// //' \insertCite{Kirovski:1998:ECL:277044.277165,Hertz:1987:UTS:44141.44146}{graphcoloring}
-// //' @export
-// // [[Rcpp::export]]
-// IntegerVector graph_coloring_hybrid_lmxrlf_tabucol(ListOf<IntegerVector> adj_list) {
-//   GraphColor *graph = new Hybrid(as_input_graph(adj_list));
-//   return as_coloring(graph, adj_list.size());
-// }
+//' @describeIn graph_coloring Color graph using a hybrid of DASTUR and TabuCol algorithm
+//' \insertCite{Kirovski:1998:ECL:277044.277165,Brelaz:1979:NMC:359094.359101,Hertz:1987:UTS:44141.44146}{graphcoloring}
+//' @export
+// [[Rcpp::export]]
+IntegerVector graph_coloring_hybrid_dsatur_tabucol(ListOf<IntegerVector> adj_list) {
+  GraphColor *graph = new HybridDsatur(as_input_graph(adj_list));
+  return as_coloring(graph, adj_list.size());
+}
+
+//' @describeIn graph_coloring Color graph using a hybrid of lmXRLF and TabuCol algorithm
+//' \insertCite{Kirovski:1998:ECL:277044.277165,Hertz:1987:UTS:44141.44146}{graphcoloring}
+//' @export
+// [[Rcpp::export]]
+IntegerVector graph_coloring_hybrid_lmxrlf_tabucol(ListOf<IntegerVector> adj_list) {
+  GraphColor *graph = new Hybrid(as_input_graph(adj_list));
+  return as_coloring(graph, adj_list.size());
+}
 
 //' @describeIn graph_coloring Color graph using TabuCol algorithm
 //' \insertCite{Hertz:1987:UTS:44141.44146}{graphcoloring}

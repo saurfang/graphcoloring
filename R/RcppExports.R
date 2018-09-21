@@ -22,6 +22,20 @@ graph_coloring_lmxrlf <- function(adj_list) {
     .Call(`_graphcoloring_graph_coloring_lmxrlf`, adj_list)
 }
 
+#' @describeIn graph_coloring Color graph using a hybrid of DASTUR and TabuCol algorithm
+#' \insertCite{Kirovski:1998:ECL:277044.277165,Brelaz:1979:NMC:359094.359101,Hertz:1987:UTS:44141.44146}{graphcoloring}
+#' @export
+graph_coloring_hybrid_dsatur_tabucol <- function(adj_list) {
+    .Call(`_graphcoloring_graph_coloring_hybrid_dsatur_tabucol`, adj_list)
+}
+
+#' @describeIn graph_coloring Color graph using a hybrid of lmXRLF and TabuCol algorithm
+#' \insertCite{Kirovski:1998:ECL:277044.277165,Hertz:1987:UTS:44141.44146}{graphcoloring}
+#' @export
+graph_coloring_hybrid_lmxrlf_tabucol <- function(adj_list) {
+    .Call(`_graphcoloring_graph_coloring_hybrid_lmxrlf_tabucol`, adj_list)
+}
+
 #' @describeIn graph_coloring Color graph using TabuCol algorithm
 #' \insertCite{Hertz:1987:UTS:44141.44146}{graphcoloring}
 #' @export

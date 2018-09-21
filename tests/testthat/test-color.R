@@ -42,14 +42,14 @@ test_that("bipartite graph can be colored with TabuCol using two colors only", {
       mutate(color = as.factor(color_tabucol(2)))
   )
 })
-#
-# test_that("graph can be colored with Hybrid DSATUR/TabuCol", {
-#   expect_graph_colored(
-#     play_islands(2, 5, 0.8, 3) %>%
-#       mutate(color = as.factor(color_hybrid_dsatur_tabucol()))
-#   )
-# })
-#
+
+test_that("graph can be colored with Hybrid DSATUR/TabuCol", {
+  expect_graph_colored(
+    play_islands(2, 5, 0.8, 3) %>%
+      mutate(color = as.factor(color_hybrid_dsatur_tabucol()))
+  )
+})
+
 # test_that("graph can be colored with Hybrid lmXRLF/TabuCol", {
 #   expect_graph_colored(
 #     play_islands(2, 5, 0.8, 3) %>%

@@ -31,7 +31,8 @@ Suggests:
     sf,
     ggraph,
     testthat,
-    covr
+    covr,
+    USAboundaries
 Language: en-US
 Roxygen: list(markdown = TRUE)
 SystemRequirements: GNU make

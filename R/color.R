@@ -65,11 +65,17 @@ NULL
 #' @seealso [color_graph()]
 #' @examples
 #'
-#' # Make chess board
-#' if (requireNamespace("sp", quietly = TRUE)) {
-#'   gt <- GridTopology(c(0,0), c(1,1), c(8,8))
-#'   sg <- SpatialGrid(gt)
-#'   board <- as(as(sg, "SpatialPixels"), "SpatialPolygons")
+#' if (requireNamespace("USAboundaries", "sf", quietly = TRUE)) {
+#'   set.seed(48)
+#'
+#'   us_states() %>%
+#'     filter(!(name %in% c("Alaska", "District of Columbia", "Hawaii", "Puerto Rico"))) %>%
+#'     transmuate(
+#'       color = st_intersects(.) %>%
+#'         graph_coloring_dsatur() %>%
+#'         as.factor()
+#'      ) %>%
+#'    plot()
 #' }
 NULL
 
@@ -94,24 +100,28 @@ color_msc <- function() {
 }
 
 #' @describeIn color_graph Color graph using [graph_coloring_lmxrlf()]
+#'
+#' **WARNING** Algorithm is unstable and requires additional testing
 #' @export
 color_lmxrlf <- function() {
   color_with(graph_coloring_lmxrlf)
 }
 
+
+#' @describeIn color_graph Color graph using [graph_coloring_hybrid_lmxrlf_tabucol()]
 #'
-#' #' @describeIn color_graph Color graph using [graph_coloring_hybrid_lmxrlf_tabucol()]
-#' #' @export
-#' color_hybrid_lmxrlf_tabucol <- function() {
-#'   color_with(graph_coloring_hybrid_lmxrlf_tabucol)
-#' }
-#'
-#' #' @describeIn color_graph Color graph using [graph_coloring_hybrid_dsatur_tabucol()]
-#' #' @export
-#' color_hybrid_dsatur_tabucol <- function() {
-#'   color_with(graph_coloring_hybrid_dsatur_tabucol)
-#' }
-#'
+#' **WARNING** Algorithm is unstable and requires additional testing
+#' @export
+color_hybrid_lmxrlf_tabucol <- function() {
+  color_with(graph_coloring_hybrid_lmxrlf_tabucol)
+}
+
+#' @describeIn color_graph Color graph using [graph_coloring_hybrid_dsatur_tabucol()]
+#' @export
+color_hybrid_dsatur_tabucol <- function() {
+  color_with(graph_coloring_hybrid_dsatur_tabucol)
+}
+
 
 #' @describeIn color_graph Color graph using [graph_coloring_tabucol()]
 #' @export

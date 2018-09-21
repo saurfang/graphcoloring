@@ -4,6 +4,8 @@
 \alias{graph_coloring_dsatur}
 \alias{graph_coloring_msc}
 \alias{graph_coloring_lmxrlf}
+\alias{graph_coloring_hybrid_dsatur_tabucol}
+\alias{graph_coloring_hybrid_lmxrlf_tabucol}
 \alias{graph_coloring_tabucol}
 \alias{graph_coloring}
 \title{Graph Coloring over Adjacency List}
@@ -13,6 +15,10 @@ graph_coloring_dsatur(adj_list)
 graph_coloring_msc(adj_list)
 
 graph_coloring_lmxrlf(adj_list)
+
+graph_coloring_hybrid_dsatur_tabucol(adj_list)
+
+graph_coloring_hybrid_lmxrlf_tabucol(adj_list)
 
 graph_coloring_tabucol(adj_list, k)
 }
@@ -47,17 +53,29 @@ with less colors.
 \item \code{graph_coloring_lmxrlf}: Color graph using Least-constraining Most-constrained eXtended RLF(lmXRLF) algorithm
 \insertCite{Kirovski:1998:ECL:277044.277165}{graphcoloring}
 
+\item \code{graph_coloring_hybrid_dsatur_tabucol}: Color graph using a hybrid of DASTUR and TabuCol algorithm
+\insertCite{Kirovski:1998:ECL:277044.277165,Brelaz:1979:NMC:359094.359101,Hertz:1987:UTS:44141.44146}{graphcoloring}
+
+\item \code{graph_coloring_hybrid_lmxrlf_tabucol}: Color graph using a hybrid of lmXRLF and TabuCol algorithm
+\insertCite{Kirovski:1998:ECL:277044.277165,Hertz:1987:UTS:44141.44146}{graphcoloring}
+
 \item \code{graph_coloring_tabucol}: Color graph using TabuCol algorithm
 \insertCite{Hertz:1987:UTS:44141.44146}{graphcoloring}
 }}
 
 \examples{
 
-# Make chess board
-if (requireNamespace("sp", quietly = TRUE)) {
-  gt <- GridTopology(c(0,0), c(1,1), c(8,8))
-  sg <- SpatialGrid(gt)
-  board <- as(as(sg, "SpatialPixels"), "SpatialPolygons")
+if (requireNamespace("USAboundaries", "sf", quietly = TRUE)) {
+  set.seed(48)
+
+  us_states() \%>\%
+    filter(!(name \%in\% c("Alaska", "District of Columbia", "Hawaii", "Puerto Rico"))) \%>\%
+    transmuate(
+      color = st_intersects(.) \%>\%
+        graph_coloring_dsatur() \%>\%
+        as.factor()
+     ) \%>\%
+   plot()
 }
 }
 \references{
