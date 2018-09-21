@@ -99,17 +99,19 @@ color_lmxrlf <- function() {
   color_with(graph_coloring_lmxrlf)
 }
 
-#' @describeIn color_graph Color graph using [graph_coloring_hybrid_lmxrlf_tabucol()]
-#' @export
-color_hybrid_lmxrlf_tabucol <- function() {
-  color_with(graph_coloring_hybrid_lmxrlf_tabucol)
-}
-
-#' @describeIn color_graph Color graph using [graph_coloring_hybrid_dsatur_tabucol()]
-#' @export
-color_hybrid_dsatur_tabucol <- function() {
-  color_with(graph_coloring_hybrid_dsatur_tabucol)
-}
+#'
+#' #' @describeIn color_graph Color graph using [graph_coloring_hybrid_lmxrlf_tabucol()]
+#' #' @export
+#' color_hybrid_lmxrlf_tabucol <- function() {
+#'   color_with(graph_coloring_hybrid_lmxrlf_tabucol)
+#' }
+#'
+#' #' @describeIn color_graph Color graph using [graph_coloring_hybrid_dsatur_tabucol()]
+#' #' @export
+#' color_hybrid_dsatur_tabucol <- function() {
+#'   color_with(graph_coloring_hybrid_dsatur_tabucol)
+#' }
+#'
 
 #' @describeIn color_graph Color graph using [graph_coloring_tabucol()]
 #' @export

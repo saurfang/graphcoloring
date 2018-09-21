@@ -5,8 +5,6 @@
 \alias{color_dsatur}
 \alias{color_msc}
 \alias{color_lmxrlf}
-\alias{color_hybrid_lmxrlf_tabucol}
-\alias{color_hybrid_dsatur_tabucol}
 \alias{color_tabucol}
 \title{Color nodes using Graph Coloring Algorithm}
 \usage{
@@ -15,10 +13,6 @@ color_dsatur()
 color_msc()
 
 color_lmxrlf()
-
-color_hybrid_lmxrlf_tabucol()
-
-color_hybrid_dsatur_tabucol()
 
 color_tabucol(k)
 }
@@ -30,6 +24,12 @@ These functions are \code{\link{tidygraph}} wrapper around the various \link[=gr
 They automatically use the graph that is being computed on, and
 otherwise passes on its arguments to the relevant coloring function. The return value is always
 a integer vector of assigned color index so that neighboring nodes never share the same color.
+
+#' @describeIn color_graph Color graph using \code{\link[=graph_coloring_hybrid_dsatur_tabucol]{graph_coloring_hybrid_dsatur_tabucol()}}
+#' @export
+color_hybrid_dsatur_tabucol <- function() {
+color_with(graph_coloring_hybrid_dsatur_tabucol)
+}
 }
 \section{Functions}{
 \itemize{
@@ -38,10 +38,6 @@ a integer vector of assigned color index so that neighboring nodes never share t
 \item \code{color_msc}: Color graph using \code{\link[=graph_coloring_msc]{graph_coloring_msc()}}
 
 \item \code{color_lmxrlf}: Color graph using \code{\link[=graph_coloring_lmxrlf]{graph_coloring_lmxrlf()}}
-
-\item \code{color_hybrid_lmxrlf_tabucol}: Color graph using \code{\link[=graph_coloring_hybrid_lmxrlf_tabucol]{graph_coloring_hybrid_lmxrlf_tabucol()}}
-
-\item \code{color_hybrid_dsatur_tabucol}: Color graph using \code{\link[=graph_coloring_hybrid_dsatur_tabucol]{graph_coloring_hybrid_dsatur_tabucol()}}
 
 \item \code{color_tabucol}: Color graph using \code{\link[=graph_coloring_tabucol]{graph_coloring_tabucol()}}
 }}
