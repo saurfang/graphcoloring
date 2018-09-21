@@ -43,6 +43,14 @@ test_that("bipartite graph can be colored with TabuCol using two colors only", {
   )
 })
 
+test_that("TabuCol errors out when coloring is impossible", {
+  expect_error(
+    play_bipartite(5, 5, 0.4) %>%
+      mutate(color = as.factor(color_tabucol(1))),
+    "Graph cannot be colored with 1 colors!"
+  )
+})
+
 test_that("graph can be colored with Hybrid DSATUR/TabuCol", {
   expect_graph_colored(
     play_islands(2, 5, 0.8, 3) %>%
@@ -56,3 +64,12 @@ test_that("graph can be colored with Hybrid DSATUR/TabuCol", {
 #       mutate(color = as.factor(color_hybrid_lmxrlf_tabucol()))
 #   )
 # })
+
+test_that("color_with expects tidygraph nodes", {
+  expect_error(
+    play_islands(5, 10, 0.8, 3) %>%
+      activate(edges) %>%
+      mutate(color = as.factor(color_dsatur())),
+    "This call requires nodes to be active"
+  )
+})

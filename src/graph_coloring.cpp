@@ -100,7 +100,7 @@ IntegerVector graph_coloring_tabucol(ListOf<IntegerVector> adj_list, int k) {
   IntegerVector coloring = as_coloring(graph, adj_list.size());
 
   if(!graph->verify()) {
-    stop("Graph cannot be colored with k colors!");
+    stop("Graph cannot be colored with " + std::to_string(k) + " colors!");
   }
 
   return coloring;
