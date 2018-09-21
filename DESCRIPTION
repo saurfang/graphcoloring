@@ -18,10 +18,25 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 LinkingTo: Rcpp
-Imports: Rcpp, tidygraph, igraph, magrittr
+Imports: 
+    Rcpp,
+    tidygraph,
+    igraph,
+    magrittr,
+    Rdpack
+RdMacros: Rdpack
 RoxygenNote: 6.1.0
-Suggests: spelling, sf, ggraph, testthat
+Suggests: 
+    spelling,
+    sf,
+    ggraph,
+    testthat,
+    covr
 Language: en-US
 Roxygen: list(markdown = TRUE)
 SystemRequirements: GNU make
 NeedsCompilation: yes
+URL: 
+  https://github.com/saurfang/graphcoloring,
+  https://github.com/brrcrites/GraphColoring
+BugReports: https://github.com/saurfang/graphcoloring/issues

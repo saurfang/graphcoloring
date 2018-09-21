@@ -45,38 +45,65 @@ IntegerVector as_coloring(GraphColor *graph, int n) {
   return output;
 }
 
+
+//' @describeIn graph_coloring Color graph using DSATUR algorithm
+//' \insertCite{Brelaz:1979:NMC:359094.359101}{graphcoloring}
+//' @export
 // [[Rcpp::export]]
 IntegerVector graph_coloring_dsatur(ListOf<IntegerVector> adj_list) {
   GraphColor *graph = new Dsatur(as_input_graph(adj_list));
   return as_coloring(graph, adj_list.size());
 }
 
-
+//' @describeIn graph_coloring Color graph using Maximum Cardinality Search(MCS) algorithm
+//' \insertCite{Palsberg:2007:RAV:1273694.1273695}{graphcoloring}
+//' @export
 // [[Rcpp::export]]
 IntegerVector graph_coloring_msc(ListOf<IntegerVector> adj_list) {
   GraphColor *graph = new Mcs(as_input_graph(adj_list));
   return as_coloring(graph, adj_list.size());
 }
 
-
+//' @describeIn graph_coloring Color graph using Least-constraining Most-constrained eXtended RLF(lmXRLF) algorithm
+//' \insertCite{Kirovski:1998:ECL:277044.277165}{graphcoloring}
+//' @export
 // [[Rcpp::export]]
 IntegerVector graph_coloring_lmxrlf(ListOf<IntegerVector> adj_list) {
   GraphColor *graph = new Lmxrlf(as_input_graph(adj_list));
   return as_coloring(graph, adj_list.size());
 }
 
-
+//' @describeIn graph_coloring Color graph using a hybrid of DASTUR and TabuCol algorithm
+//' \insertCite{Kirovski:1998:ECL:277044.277165,Brelaz:1979:NMC:359094.359101,Hertz:1987:UTS:44141.44146}{graphcoloring}
+//' @export
 // [[Rcpp::export]]
-IntegerVector graph_coloring_hybrid_dsatur(ListOf<IntegerVector> adj_list) {
+IntegerVector graph_coloring_hybrid_dsatur_tabucol(ListOf<IntegerVector> adj_list) {
   GraphColor *graph = new HybridDsatur(as_input_graph(adj_list));
   return as_coloring(graph, adj_list.size());
 }
 
-
+//' @describeIn graph_coloring Color graph using a hybrid of lmXRLF and TabuCol algorithm
+//' \insertCite{Kirovski:1998:ECL:277044.277165,Hertz:1987:UTS:44141.44146}{graphcoloring}
+//' @export
 // [[Rcpp::export]]
-IntegerVector graph_coloring_hybrid_tabucol(ListOf<IntegerVector> adj_list) {
+IntegerVector graph_coloring_hybrid_lmxrlf_tabucol(ListOf<IntegerVector> adj_list) {
   GraphColor *graph = new Hybrid(as_input_graph(adj_list));
   return as_coloring(graph, adj_list.size());
+}
+
+//' @describeIn graph_coloring Color graph using TabuCol algorithm
+//' \insertCite{Hertz:1987:UTS:44141.44146}{graphcoloring}
+//' @export
+// [[Rcpp::export]]
+IntegerVector graph_coloring_tabucol(ListOf<IntegerVector> adj_list, int k) {
+  GraphColor *graph = new Tabucol(as_input_graph(adj_list), k);
+  IntegerVector coloring = as_coloring(graph, adj_list.size());
+
+  if(!graph->verify()) {
+    stop("Graph cannot be colored with k colors!");
+  }
+
+  return coloring;
 }
 
 

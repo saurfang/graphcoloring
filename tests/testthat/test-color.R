@@ -1,5 +1,10 @@
 context("test-color")
 
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+library(tidygraph)
+
+test_that("graph can be colored", {
+  expect_success(
+    play_islands(5, 10, 0.8, 3) %>%
+      mutate(color = as.factor(color_dsatur()))
+  )
 })

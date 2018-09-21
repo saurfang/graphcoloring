@@ -10,6 +10,15 @@ A collection of graph coloring algorithms for coloring vertices of
     a graph such that no two adjacent vertices share the same color. The algorithms
     are included via the embedded 'GraphColoring' C++ library, <https://github.com/brrcrites/GraphColoring>.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/saurfang/graphcoloring}
+  \item \url{https://github.com/brrcrites/GraphColoring}
+  \item Report bugs at \url{https://github.com/saurfang/graphcoloring/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Forest Fang \email{saurfang@users.noreply.github.com}
 

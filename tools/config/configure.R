@@ -2,7 +2,7 @@
 # Use 'define()' to define configuration variables.
 # Use 'configure_file()' to substitute configuration values.
 
-dir.create("src/GraphColoring")
+dir.create("src/GraphColoring", showWarnings = FALSE)
 file.copy("src/GraphColoring-raw/Header", "src/GraphColoring", recursive = TRUE)
 file.copy("src/GraphColoring-raw/Source", "src/GraphColoring", recursive = TRUE)
 unlink("src/GraphColoring/Source/main.cpp")
