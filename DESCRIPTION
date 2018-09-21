@@ -30,6 +30,7 @@ Suggests:
     spelling,
     sf,
     ggraph,
+    ggplot2,
     testthat,
     covr,
     USAboundaries
