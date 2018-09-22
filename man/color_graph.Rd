@@ -58,7 +58,7 @@ if (requireNamespace("ggraph", quietly = TRUE)) {
 
   play_islands(5, 10, 0.8, 3) \%>\%
     mutate(color = as.factor(color_dsatur())) \%>\%
-    ggraph(layout = 'kk') +
+    ggraph::ggraph(layout = 'kk') +
     geom_edge_link(aes(alpha = ..index..), show.legend = FALSE) +
     geom_node_point(aes(color = color), size = 7) +
     theme_graph()

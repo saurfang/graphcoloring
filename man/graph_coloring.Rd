@@ -64,16 +64,18 @@ with less colors.
 }}
 
 \examples{
+library(tidygraph)
 
-if (requireNamespace("USAboundaries", "sf", quietly = TRUE)) {
-  set.seed(48)
+if (requireNamespace("sf", quietly = TRUE) && requireNamespace("USAboundaries", quietly = TRUE)) {
+ library(sf)
+ library(USAboundaries)
 
-  us_states() \%>\%
-    filter(!(name \%in\% c("Alaska", "District of Columbia", "Hawaii", "Puerto Rico"))) \%>\%
-    transmuate(
-      color = st_intersects(.) \%>\%
-        graph_coloring_dsatur() \%>\%
-        as.factor()
+ us_states() \%>\%
+   filter(!(name \%in\% c("Alaska", "District of Columbia", "Hawaii", "Puerto Rico"))) \%>\%
+   transmute(
+     color = st_intersects(.) \%>\%
+       graph_coloring_dsatur() \%>\%
+       as.factor()
      ) \%>\%
    plot()
 }

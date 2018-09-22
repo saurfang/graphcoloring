@@ -33,7 +33,13 @@ Suggests:
     ggplot2,
     testthat,
     covr,
-    USAboundaries
+    USAboundaries,
+    knitr,
+    rmarkdown,
+    htmltools,
+    dplyr,
+    tidyr,
+    rvest
 Language: en-US
 Roxygen: list(markdown = TRUE)
 SystemRequirements: GNU make
@@ -42,3 +48,4 @@ URL:
   https://github.com/saurfang/graphcoloring,
   https://github.com/brrcrites/GraphColoring
 BugReports: https://github.com/saurfang/graphcoloring/issues
+VignetteBuilder: knitr
