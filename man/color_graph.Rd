@@ -54,11 +54,12 @@ a integer vector of assigned color index so that neighboring nodes never share t
 library(tidygraph)
 
 if (requireNamespace("ggraph", quietly = TRUE)) {
+  library(ggraph)
   set.seed(42)
 
   play_islands(5, 10, 0.8, 3) \%>\%
     mutate(color = as.factor(color_dsatur())) \%>\%
-    ggraph::ggraph(layout = 'kk') +
+    ggraph(layout = 'kk') +
     geom_edge_link(aes(alpha = ..index..), show.legend = FALSE) +
     geom_node_point(aes(color = color), size = 7) +
     theme_graph()
