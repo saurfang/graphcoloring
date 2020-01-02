@@ -39,7 +39,7 @@ graph_coloring_hybrid_lmxrlf_tabucol <- function(adj_list) {
 #' @describeIn graph_coloring Color graph using TabuCol algorithm
 #' \insertCite{Hertz:1987:UTS:44141.44146}{graphcoloring}
 #' @export
-graph_coloring_tabucol <- function(adj_list, k) {
-    .Call(`_graphcoloring_graph_coloring_tabucol`, adj_list, k)
+graph_coloring_tabucol <- function(adj_list, k, tabu_size = 25L, rep = 100L, nbmax = 1000L) {
+    .Call(`_graphcoloring_graph_coloring_tabucol`, adj_list, k, tabu_size, rep, nbmax)
 }
 

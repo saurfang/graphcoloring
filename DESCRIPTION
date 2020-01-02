@@ -25,7 +25,7 @@ Imports:
     magrittr,
     Rdpack
 RdMacros: Rdpack
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Suggests: 
     spelling,
     sf,

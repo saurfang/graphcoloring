@@ -9,6 +9,9 @@
 #' @rdname color_graph
 #'
 #' @param k number of colors to use for graph coloring
+#' @param tabu_size size of tabu list
+#' @param rep number of inner iterations
+#' @param nbmax maximum number of non-improving outer iterations
 #'
 #' @examples
 #' library(tidygraph)
@@ -110,7 +113,6 @@ color_lmxrlf <- function() {
   color_with(graph_coloring_lmxrlf)
 }
 
-
 #' @describeIn color_graph Color graph using [graph_coloring_hybrid_lmxrlf_tabucol()]
 #'
 #' **WARNING** Algorithm is unstable and requires additional testing
@@ -125,9 +127,8 @@ color_hybrid_dsatur_tabucol <- function() {
   color_with(graph_coloring_hybrid_dsatur_tabucol)
 }
 
-
 #' @describeIn color_graph Color graph using [graph_coloring_tabucol()]
 #' @export
-color_tabucol <- function(k) {
-  color_with(graph_coloring_tabucol, k)
+color_tabucol <- function(k, tabu_size = 25 , rep = 100, nbmax = 1000) {
+  color_with(graph_coloring_tabucol, k, tabu_size, rep, nbmax)
 }

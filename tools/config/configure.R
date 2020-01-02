@@ -6,6 +6,7 @@ dir.create("src/GraphColoring", showWarnings = FALSE)
 file.copy("src/GraphColoring-raw/Header", "src/GraphColoring", recursive = TRUE)
 file.copy("src/GraphColoring-raw/Source", "src/GraphColoring", recursive = TRUE)
 unlink("src/GraphColoring/Source/main.cpp")
+unlink("src/GraphColoring/Source/test.cpp")
 
 cpp_files <- list.files(
   "src/GraphColoring",
@@ -26,7 +27,7 @@ for (file in cpp_files) {
   lines <- gsub("std::Rcerr", "Rcerr", lines, fixed = TRUE)
 
   lines <- gsub("srand(time(NULL));", "", lines, fixed = TRUE)
-  lines <- gsub("rand\\(\\) % ([A-Za-z_.]+\\(\\))", "Rcpp::sample(\\1, 1)[0] - 1", lines, perl = TRUE)
+  lines <- gsub("rand\\(\\) % ([A-Za-z->_.]+\\(\\))", "Rcpp::sample(\\1, 1)[0] - 1", lines, perl = TRUE)
   lines <- gsub("rand\\(\\) % ([A-za-z->]+)", "Rcpp::sample(\\1, 1)[0] - 1", lines, perl = TRUE)
 
   lines <- c(

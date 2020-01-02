@@ -37,9 +37,18 @@ test_that("graph can be colored with lmXRLF", {
 })
 
 test_that("bipartite graph can be colored with TabuCol using two colors only", {
+  set.seed(324)
   expect_graph_colored(
-    play_bipartite(10, 10, 0.4) %>%
+    play_bipartite(8, 8, 0.4) %>%
       mutate(color = as.factor(color_tabucol(2)))
+  )
+})
+
+test_that("TabuCol may fail to color a bipartite graph using two colors when iterations are insufficient", {
+  set.seed(1023)
+  expect_error(
+    play_bipartite(8, 8, 0.4) %>%
+      mutate(color = as.factor(color_tabucol(2, rep = 10, nbmax = 10)))
   )
 })
 

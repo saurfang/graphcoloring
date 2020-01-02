@@ -17,3 +17,4 @@
 ^\.httr-oauth$
 ^src/GraphColoring-raw/\.git$
 ^src/GraphColoring-raw/\.travis\.yml$
+^src/GraphColoring-raw/googletest$

@@ -20,10 +20,16 @@ color_hybrid_lmxrlf_tabucol()
 
 color_hybrid_dsatur_tabucol()
 
-color_tabucol(k)
+color_tabucol(k, tabu_size = 25, rep = 100, nbmax = 1000)
 }
 \arguments{
 \item{k}{number of colors to use for graph coloring}
+
+\item{tabu_size}{size of tabu list}
+
+\item{rep}{number of inner iterations}
+
+\item{nbmax}{maximum number of non-improving outer iterations}
 }
 \description{
 These functions are \code{\link{tidygraph}} wrapper around the various \link[=graph_coloring]{graph coloring algorithms}.

@@ -1,11 +1,11 @@
 #include <Rcpp.h>
 
-#include "GraphColoring/Header/graph_color.h"
-#include "GraphColoring/Header/dsatur.h"
-#include "GraphColoring/Header/mcs.h"
-#include "GraphColoring/Header/lmxrlf.h"
-#include "GraphColoring/Header/hybrid_dsatur.h"
-#include "GraphColoring/Header/hybrid.h"
+#include "GraphColoring/Header/coloring_algorithm.hpp"
+#include "GraphColoring/Header/dsatur.hpp"
+#include "GraphColoring/Header/mcs.hpp"
+#include "GraphColoring/Header/lmxrlf.hpp"
+#include "GraphColoring/Header/hybrid_dsatur.hpp"
+#include "GraphColoring/Header/hybrid_lmxrlf.hpp"
 
 using namespace Rcpp;
 
@@ -17,7 +17,7 @@ using GraphColoring::Dsatur;
 using GraphColoring::Mcs;
 using GraphColoring::Lmxrlf;
 using GraphColoring::HybridDsatur;
-using GraphColoring::Hybrid;
+using GraphColoring::HybridLmxrlf;
 using GraphColoring::GraphColor;
 
 map<string, vector<string> > as_input_graph(ListOf<IntegerVector> adj_list) {
@@ -87,7 +87,7 @@ IntegerVector graph_coloring_hybrid_dsatur_tabucol(ListOf<IntegerVector> adj_lis
 //' @export
 // [[Rcpp::export]]
 IntegerVector graph_coloring_hybrid_lmxrlf_tabucol(ListOf<IntegerVector> adj_list) {
-  GraphColor *graph = new Hybrid(as_input_graph(adj_list));
+  GraphColor *graph = new HybridLmxrlf(as_input_graph(adj_list));
   return as_coloring(graph, adj_list.size());
 }
 
@@ -95,11 +95,11 @@ IntegerVector graph_coloring_hybrid_lmxrlf_tabucol(ListOf<IntegerVector> adj_lis
 //' \insertCite{Hertz:1987:UTS:44141.44146}{graphcoloring}
 //' @export
 // [[Rcpp::export]]
-IntegerVector graph_coloring_tabucol(ListOf<IntegerVector> adj_list, int k) {
-  GraphColor *graph = new Tabucol(as_input_graph(adj_list), k);
+IntegerVector graph_coloring_tabucol(ListOf<IntegerVector> adj_list, int k, int tabu_size = 25, int rep = 100, int nbmax = 1000) {
+  GraphColor *graph = new Tabucol(as_input_graph(adj_list), k, tabu_size, rep, nbmax);
   IntegerVector coloring = as_coloring(graph, adj_list.size());
 
-  if(!graph->verify()) {
+  if(!graph->is_valid()) {
     stop("Graph cannot be colored with " + std::to_string(k) + " colors!");
   }
 

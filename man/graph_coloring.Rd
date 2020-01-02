@@ -20,13 +20,20 @@ graph_coloring_hybrid_dsatur_tabucol(adj_list)
 
 graph_coloring_hybrid_lmxrlf_tabucol(adj_list)
 
-graph_coloring_tabucol(adj_list, k)
+graph_coloring_tabucol(adj_list, k, tabu_size = 25L, rep = 100L,
+  nbmax = 1000L)
 }
 \arguments{
 \item{adj_list}{an adjacency list in the format of \code{list} of \code{integer} vector. The outer list
 should enumerate nodes comprehensively and each integer vector enumerates corresponding neighboring nodes}
 
 \item{k}{number of colors to use for graph coloring}
+
+\item{tabu_size}{size of tabu list}
+
+\item{rep}{number of inner iterations}
+
+\item{nbmax}{maximum number of non-improving outer iterations}
 }
 \description{
 These functions perform graph coloring using various algorithms over an adjacency list.
