@@ -1,3 +1,5 @@
 include Makevars
 
 OBJECTS = $(CPPFILES:.cpp=.o)
+
+CXX_STD = CXX11

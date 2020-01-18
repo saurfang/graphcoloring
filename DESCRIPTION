@@ -1,11 +1,13 @@
 Package: graphcoloring
-Title: Graph Coloring Algorithms for tidygraph
+Title: Graph Coloring Algorithms for Tidygraph
 Version: 0.1.0
 Authors@R: c(
     person(given = "Forest",
            family = "Fang",
            role = c("aut", "cre"),
-           email = "saurfang@users.noreply.github.com"),
+           email = "forest.fang@outlook.com",
+           comment = c(ORCID = "0000-0002-9180-1270")
+    ),
     person("Brian", "Crites", 
       role = c("aut", "cph"),
       comment = "Author of included GraphColoring code"
@@ -25,7 +27,7 @@ Imports:
     magrittr,
     Rdpack
 RdMacros: Rdpack
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Suggests: 
     spelling,
     sf,

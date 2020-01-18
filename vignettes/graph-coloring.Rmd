@@ -90,7 +90,7 @@ petersen_positions <- data_frame(
 petersen_graph %>%
   as_tbl_graph() %>%
   mutate(color = as.factor(petersen_colors)) %>%
-  ggraph(., layout = "manual", node.positions = petersen_positions) +
+  ggraph(., layout = "manual", x = petersen_positions$x, y = petersen_positions$y) +
   geom_edge_link() +
   geom_node_point(aes(color = color), size = 7, show.legend = FALSE) +
   theme_graph()

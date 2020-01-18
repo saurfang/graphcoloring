@@ -38,7 +38,7 @@ for (file in cpp_files) {
     ""
   )
 
-  writeLines(lines, file)
+  writeBin(paste(lines, collapse = "\n"), file)
 }
 
 h_files <- list.files(
@@ -55,5 +55,5 @@ for (file in h_files) {
     ""
   )
 
-  writeLines(lines, file)
+  writeBin(paste(lines, collapse = "\n"), file)
 }

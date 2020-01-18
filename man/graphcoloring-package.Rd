@@ -4,7 +4,7 @@
 \name{graphcoloring-package}
 \alias{graphcoloring}
 \alias{graphcoloring-package}
-\title{graphcoloring: Graph Coloring Algorithms for tidygraph}
+\title{graphcoloring: Graph Coloring Algorithms for Tidygraph}
 \description{
 A collection of graph coloring algorithms for coloring vertices of 
     a graph such that no two adjacent vertices share the same color. The algorithms
@@ -20,7 +20,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Forest Fang \email{saurfang@users.noreply.github.com}
+\strong{Maintainer}: Forest Fang \email{forest.fang@outlook.com} (\href{https://orcid.org/0000-0002-9180-1270}{ORCID})
 
 Authors:
 \itemize{
